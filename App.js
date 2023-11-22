@@ -1,18 +1,10 @@
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, Button, StatusBar, Alert, Platform } from 'react-native';
+import WelcomeScreen from './app/screens/WelcomeScreen';
+// import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Hello Kapil</Text>
-
-    </SafeAreaView>
+    <WelcomeScreen />
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  },
-});
