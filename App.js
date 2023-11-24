@@ -7,18 +7,14 @@ import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Screen from './app/components/Screen';
 import Icon from './app/components/icon';
+import ListItem from './app/components/ListItem';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 export default function App() {
   return (
 
     <Screen>
-      <Icon
-        name="email"
-        size={50}
-        backgroundColor="red"
-        iconColor="white"
-      />
+      <ListItem title={'my title'} ImageComponent={<Icon name={'email'} />} />
 
     </Screen>
   );
