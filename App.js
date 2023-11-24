@@ -9,12 +9,13 @@ import Screen from './app/components/Screen';
 import Icon from './app/components/icon';
 import ListItem from './app/components/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
+import ListingScreen from './app/screens/ListingScreen';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 export default function App() {
   return (
 
-    <AccountScreen />
+    <ListingScreen />
   );
 }
 
