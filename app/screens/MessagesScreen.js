@@ -26,7 +26,7 @@ function MessagesScreen(props) {
 
             <FlatList data={messages} keyExtractor={message => message.id.toString()
             }
-                renderItem={({ item }) => <ListItem title={item.title} subtitle={item.description} image={item.image} />
+                renderItem={({ item }) => <ListItem onPress={() => console.log('clicked', item)} title={item.title} subtitle={item.description} image={item.image} />
                 }
                 ItemSeparatorComponent={ListItemSeperator}
             />
