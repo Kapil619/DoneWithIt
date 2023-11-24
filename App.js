@@ -8,15 +8,13 @@ import MessagesScreen from './app/screens/MessagesScreen';
 import Screen from './app/components/Screen';
 import Icon from './app/components/icon';
 import ListItem from './app/components/ListItem';
+import AccountScreen from './app/screens/AccountScreen';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 export default function App() {
   return (
 
-    <Screen>
-      <ListItem title={'my title'} ImageComponent={<Icon name={'email'} />} />
-
-    </Screen>
+    <AccountScreen />
   );
 }
 
