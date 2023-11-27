@@ -13,6 +13,7 @@ import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 import { useState } from 'react';
+import LoginScreen from './app/screens/LoginScreen';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 
@@ -23,13 +24,8 @@ const categories = [
   { label: 'Technology', value: 3 },
 ]
 export default function App() {
-  const [category, setcategory] = useState(categories[0])
   return (
-
-    <Screen>
-      <AppPicker selectedItem={category} onSelectItem={item => setcategory(item)} items={categories} icon={'apps'} placeholder={'Category'} />
-      <AppTextInput icon={'email'} placeholder="Email" />
-    </Screen>
+    <LoginScreen />
   );
 }
 
