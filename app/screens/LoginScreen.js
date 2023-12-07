@@ -6,6 +6,7 @@ import AppButton from '../components/AppButton';
 import AppTextInput from '../components/AppTextInput';
 import ErrorMessage from '../components/ErrorMessage';
 import Screen from '../components/Screen';
+import AppFormField from '../components/AppFormField';
 
 
 
@@ -21,16 +22,12 @@ function LoginScreen(props) {
             <Formik validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)} >
                 {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
                     <>
-                        <AppTextInput placeholder="Email" autoCapitalize="none" keyboardType="email-address"
-                            onChangeText={handleChange('email')}
-                            textContentType='emailAddress' icon="email"
-                            onBlur={() => setFieldTouched('email')}
+                        <AppFormField placeholder="Email" autoCapitalize="none" keyboardType="email-address"
+                            textContentType='emailAddress' icon="email" name={'email'}
                         />
-                        <ErrorMessage error={errors.email} visible={touched.email} />
 
 
-                        <AppTextInput onChangeText={handleChange('password')} placeholder="Password" onBlur={() => setFieldTouched('password')} autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
-                        <ErrorMessage error={errors.password} visible={touched.password} />
+                        <AppFormField placeholder="Password" name={'password'} autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
                         <AppButton title="Login" onPress={handleSubmit} />
                     </>
                 )}
