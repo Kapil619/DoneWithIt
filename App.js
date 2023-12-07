@@ -7,7 +7,7 @@ import ListingDetailsScreen from './app/screens/ListingDetailsScreen';
 import MessagesScreen from './app/screens/MessagesScreen';
 import Screen from './app/components/Screen';
 import Icon from './app/components/icon';
-import ListItem from './app/components/ListItem';
+import ListItem from './app/components/lists/ListItem';
 import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
@@ -15,6 +15,7 @@ import AppPicker from './app/components/AppPicker';
 import { useState } from 'react';
 import LoginScreen from './app/screens/LoginScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 
@@ -26,7 +27,7 @@ const categories = [
 ]
 export default function App() {
   return (
-    <ListingEditScreen />
+    <RegisterScreen />
   );
 }
 
