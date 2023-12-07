@@ -8,6 +8,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import Screen from '../components/Screen';
 import AppFormField from '../components/AppFormField';
 import SubmitButton from '../components/SubmitButton';
+import AppForm from '../components/AppForm';
 
 
 
@@ -20,20 +21,13 @@ function LoginScreen(props) {
     return (
         <Screen style={styles.container}>
             <Image source={require('../assets/logo-red.png')} style={styles.logo} />
-            <Formik validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)} >
-                {() => (
-                    <>
-                        <AppFormField placeholder="Email" autoCapitalize="none" keyboardType="email-address"
-                            textContentType='emailAddress' icon="email" name={'email'}
-                        />
-
-
-                        <AppFormField placeholder="Password" name={'password'} autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
-
-                        <SubmitButton title="Login" />
-                    </>
-                )}
-            </Formik>
+            <AppForm validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)} >
+                <AppFormField placeholder="Email" autoCapitalize="none" keyboardType="email-address"
+                    textContentType='emailAddress' icon="email" name={'email'}
+                />
+                <AppFormField placeholder="Password" name={'password'} autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
+                <SubmitButton title="Login" />
+            </AppForm>
         </Screen>
     );
 }
