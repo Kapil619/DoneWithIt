@@ -14,6 +14,7 @@ import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
 import { useState } from 'react';
 import LoginScreen from './app/screens/LoginScreen';
+import ListingEditScreen from './app/screens/ListingEditScreen';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 
 
@@ -25,7 +26,7 @@ const categories = [
 ]
 export default function App() {
   return (
-    <LoginScreen />
+    <ListingEditScreen />
   );
 }
 
