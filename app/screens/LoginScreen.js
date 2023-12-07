@@ -19,14 +19,18 @@ function LoginScreen(props) {
         <Screen style={styles.container}>
             <Image source={require('../assets/logo-red.png')} style={styles.logo} />
             <Formik validationSchema={validationSchema} initialValues={{ email: '', password: '' }} onSubmit={values => console.log(values)} >
-                {({ handleChange, handleSubmit, errors }) => (
+                {({ handleChange, handleSubmit, errors, setFieldTouched, touched }) => (
                     <>
                         <AppTextInput placeholder="Email" autoCapitalize="none" keyboardType="email-address"
                             onChangeText={handleChange('email')}
-                            textContentType='emailAddress' icon="email" />
-                        <ErrorMessage error={errors.email} />
-                        <AppTextInput onChangeText={handleChange('password')} placeholder="Password" autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
-                        <ErrorMessage error={errors.password} />
+                            textContentType='emailAddress' icon="email"
+                            onBlur={() => setFieldTouched('email')}
+                        />
+                        <ErrorMessage error={errors.email} visible={touched.email} />
+
+
+                        <AppTextInput onChangeText={handleChange('password')} placeholder="Password" onBlur={() => setFieldTouched('password')} autoCapitalize="none" autoCorrect={false} icon="lock" secureTextEntry textContentType='password' />
+                        <ErrorMessage error={errors.password} visible={touched.password} />
                         <AppButton title="Login" onPress={handleSubmit} />
                     </>
                 )}

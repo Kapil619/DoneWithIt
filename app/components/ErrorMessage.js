@@ -3,8 +3,8 @@ import AppText from './AppText';
 import { StyleSheet } from 'react-native';
 
 
-function ErrorMessage({ error }) {
-    if (!error) return null;
+function ErrorMessage({ error, visible }) {
+    if (!visible || !error) return null;
 
     return (
         <AppText style={styles.error}>
