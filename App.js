@@ -12,12 +12,14 @@ import AccountScreen from './app/screens/AccountScreen';
 import ListingScreen from './app/screens/ListingScreen';
 import AppTextInput from './app/components/AppTextInput';
 import AppPicker from './app/components/AppPicker';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import LoginScreen from './app/screens/LoginScreen';
 import ListingEditScreen from './app/screens/ListingEditScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
+import ImageInput from './app/components/ImageInput';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
-
+import * as ImagePicker from 'expo-image-picker';
+import * as Permissions from 'expo-permissions';
 
 
 const categories = [
@@ -26,8 +28,39 @@ const categories = [
   { label: 'Technology', value: 3 },
 ]
 export default function App() {
+  const [imageUri, setimageUri] = useState()
+
+  const requestPermission = async () => {
+    const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
+    if (!granted)
+      alert('You need to enable permission to access the library')
+
+  }
+
+  useEffect(() => {
+    requestPermission();
+  }, [])
+
+  const selectImage = async () => {
+
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      if (!result.canceled)
+        setimageUri(result.uri);
+
+    } catch (error) {
+      console.log('error reading ')
+    }
+
+  }
+
+
   return (
-    <ListingEditScreen />
+    <Screen>
+      <Button title='Select Image ' onPress={selectImage} />
+      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
+      <ImageInput imageUri={imageUri} />
+    </Screen>
   );
 }
 
