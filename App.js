@@ -30,16 +30,9 @@ const categories = [
 export default function App() {
   const [imageUri, setimageUri] = useState()
 
-  const requestPermission = async () => {
-    const { granted } = await ImagePicker.requestCameraRollPermissionsAsync();
-    if (!granted)
-      alert('You need to enable permission to access the library')
 
-  }
 
-  useEffect(() => {
-    requestPermission();
-  }, [])
+
 
   const selectImage = async () => {
 
@@ -57,9 +50,8 @@ export default function App() {
 
   return (
     <Screen>
-      <Button title='Select Image ' onPress={selectImage} />
-      <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} />
-      <ImageInput imageUri={imageUri} />
+
+      <ImageInput imageUri={imageUri} onChangeImage={uri => setimageUri(uri)} />
     </Screen>
   );
 }
