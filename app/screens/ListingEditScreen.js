@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
@@ -11,6 +11,10 @@ import {
 import Screen from '../components/Screen';
 import CategoryPickerItem from '../components/CategoryPickerItem';
 import FormImagePicker from '../components/forms/FormImagePicker';
+
+import *  as Location from 'expo-location';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+
 
 const validationSchema = Yup.object().shape({
     title: Yup.string().required().min(1).label('Title'),
@@ -33,6 +37,20 @@ const categories = [
 
 ];
 function ListingEditScreen() {
+
+    const [location, setLocation] = useState()
+
+    const getLocation = async () => {
+        const { granted } = await Location.requestPermissionsAsync();
+        if (!granted) return;
+        const { coords: { latitude, longitude } } = await Location.getLastKnownPositionAsync();
+        setLocation({ latitude, longitude });
+
+    }
+    useEffect(() => {
+        getLocation();
+    }, [])
+
     return (
         <Screen style={styles.container} >
             <AppForm
@@ -43,7 +61,7 @@ function ListingEditScreen() {
                     category: null,
                     images: []
                 }}
-                onSubmit={(values) => console.log(values)}
+                onSubmit={(values) => console.log(location)}
                 validationSchema={validationSchema}
             >
                 <FormImagePicker name={'images'} />
