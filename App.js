@@ -20,6 +20,7 @@ import ImageInput from './app/components/ImageInput';
 // import { useDimensions, useDeviceOrientation } from 'react-native-community/hooks';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
+import ImageInputList from './app/components/ImageInputList';
 
 
 const categories = [
@@ -28,30 +29,24 @@ const categories = [
   { label: 'Technology', value: 3 },
 ]
 export default function App() {
-  const [imageUri, setimageUri] = useState()
+  const [imageUris, setimageUris] = useState([]);
 
 
+  const handleAdd = uri => {
+    setimageUris([...imageUris, uri]);
+  };
 
-
-
-  const selectImage = async () => {
-
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync();
-      if (!result.canceled)
-        setimageUri(result.uri);
-
-    } catch (error) {
-      console.log('error reading ')
-    }
-
-  }
-
-
+  const handleRemove = uri => {
+    setimageUris(imageUris.filter(imageUri => imageUri !== uri))
+  };
   return (
     <Screen>
+      <ImageInputList
+        imageUris={imageUris}
+        onAddImage={handleAdd}
+        onRemoveImage={handleRemove}
 
-      <ImageInput imageUri={imageUri} onChangeImage={uri => setimageUri(uri)} />
+      />
     </Screen>
   );
 }
