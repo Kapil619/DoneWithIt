@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
+import CategoryPickerItem from '../components/CategoryPickerItem';
+import Screen from '../components/Screen';
 import {
     AppForm,
     AppFormField,
     AppFormPicker,
     SubmitButton,
 } from '../components/forms';
-import Screen from '../components/Screen';
-import CategoryPickerItem from '../components/CategoryPickerItem';
 import FormImagePicker from '../components/forms/FormImagePicker';
 
-import *  as Location from 'expo-location';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
+import useLocation from '../hooks/useLocation';
 
 
 const validationSchema = Yup.object().shape({
@@ -38,18 +37,7 @@ const categories = [
 ];
 function ListingEditScreen() {
 
-    const [location, setLocation] = useState()
-
-    const getLocation = async () => {
-        const { granted } = await Location.requestPermissionsAsync();
-        if (!granted) return;
-        const { coords: { latitude, longitude } } = await Location.getLastKnownPositionAsync();
-        setLocation({ latitude, longitude });
-
-    }
-    useEffect(() => {
-        getLocation();
-    }, [])
+    // const location = useLocation();
 
     return (
         <Screen style={styles.container} >
@@ -61,7 +49,7 @@ function ListingEditScreen() {
                     category: null,
                     images: []
                 }}
-                onSubmit={(values) => console.log(location)}
+                // onSubmit={(values) => console.log(location)}
                 validationSchema={validationSchema}
             >
                 <FormImagePicker name={'images'} />
