@@ -29,25 +29,9 @@ const categories = [
   { label: 'Technology', value: 3 },
 ]
 export default function App() {
-  const [imageUris, setimageUris] = useState([]);
 
-
-  const handleAdd = uri => {
-    setimageUris([...imageUris, uri]);
-  };
-
-  const handleRemove = uri => {
-    setimageUris(imageUris.filter(imageUri => imageUri !== uri))
-  };
   return (
-    <Screen>
-      <ImageInputList
-        imageUris={imageUris}
-        onAddImage={handleAdd}
-        onRemoveImage={handleRemove}
-
-      />
-    </Screen>
+    <ListingEditScreen />
   );
 }
 

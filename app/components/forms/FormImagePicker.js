@@ -6,12 +6,13 @@ import { useFormikContext } from 'formik';
 function FormImagePicker({ name }) {
     const { errors, setFieldValue, touched, values } = useFormikContext();
     const imageUris = values[name];
+
     const handleAdd = uri => {
-        setFieldValue(name, [imageUris, uri]);
+        setFieldValue(name, [...imageUris, uri]);
     };
 
     const handleRemove = uri => {
-        setimageUris(name, imageUris.filter(imageUri => imageUri !== uri))
+        setFieldValue(name, imageUris.filter(imageUri => imageUri !== uri))
     };
 
     return (
