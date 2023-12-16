@@ -21,6 +21,7 @@ import ImageInput from './app/components/ImageInput';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import ImageInputList from './app/components/ImageInputList';
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 
 const categories = [
@@ -31,7 +32,10 @@ const categories = [
 export default function App() {
 
   return (
-    <ListingEditScreen />
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
+
   );
 }
 
