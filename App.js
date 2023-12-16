@@ -24,6 +24,7 @@ import ImageInputList from './app/components/ImageInputList';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
 import navigationTheme from './app/navigation/navigationTheme';
+import AppNavigator from './app/navigation/AppNavigator';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -34,7 +35,7 @@ export default function App() {
 
   return (
     <NavigationContainer theme={navigationTheme}>
-      <AuthNavigator />
+      <AppNavigator />
     </NavigationContainer>
 
   );
