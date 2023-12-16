@@ -23,6 +23,7 @@ import * as Permissions from 'expo-permissions';
 import ImageInputList from './app/components/ImageInputList';
 import AuthNavigator from './app/navigation/AuthNavigator';
 import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
+import navigationTheme from './app/navigation/navigationTheme';
 
 const categories = [
   { label: 'Furniture', value: 1 },
@@ -32,7 +33,7 @@ const categories = [
 export default function App() {
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navigationTheme}>
       <AuthNavigator />
     </NavigationContainer>
 
