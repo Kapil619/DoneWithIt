@@ -22,7 +22,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import ImageInputList from './app/components/ImageInputList';
 import AuthNavigator from './app/navigation/AuthNavigator';
-
+import NavigationContainer from '@react-navigation/native/src/NavigationContainer';
 
 const categories = [
   { label: 'Furniture', value: 1 },
