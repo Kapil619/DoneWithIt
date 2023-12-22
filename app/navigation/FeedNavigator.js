@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 const FeedNavigator = () => {
     return (
         <Stack.Navigator screenOptions={{
-            presentation: 'modal',
+            presentation: 'card',
         }}>
             <Stack.Screen name='Listings' component={ListingScreen} options={{
                 headerShown: false
